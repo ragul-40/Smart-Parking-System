@@ -1,4 +1,53 @@
-body {
+const totalSlots = 10;
+let availableSlots = totalSlots;
+
+// Initialize parking slots: true = available, false = occupied
+const parkingSlots = Array(totalSlots).fill(true);
+
+// Reference to the parking lot container
+const parkingLotDiv = document.getElementById('parkingLot');
+const availableCountSpan = document.getElementById('availableCount');
+
+// Function to render parking slots
+function renderSlots() {
+  parkingLotDiv.innerHTML = '';
+  for (let i = 0; i < totalSlots; i++) {
+    const slotDiv = document.createElement('div');
+    slotDiv.className = 'parkingspot ' + (parkingSlots[i] ? 'available' : 'occupied');
+    slotDiv.innerText = 'Slot ' + (i + 1);
+    slotDiv.onclick = () => toggleSpecificSlot(i);
+    parkingLotDiv.appendChild(slotDiv);
+  }
+  updateAvailableCount();
+}
+
+// Function to update available slot count display
+function updateAvailableCount() {
+  availableCountSpan.innerText = availableSlots;
+}
+
+// Function to toggle a specific slot
+function toggleSpecificSlot(index) {
+  if (parkingSlots[index]) {
+    // Occupy the slot
+    parkingSlots[index] = false;
+    availableSlots--;
+  } else {
+    // Free the slot
+    parkingSlots[index] = true;
+    availableSlots++;
+  }
+  renderSlots();
+}
+
+// Optional: toggle a random slot for demonstration
+function toggleSlot() {
+  const randomIndex = Math.floor(Math.random() * totalSlots);
+  toggleSpecificSlot(randomIndex);
+}
+
+// Initial render
+renderSlots();body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 20px;
