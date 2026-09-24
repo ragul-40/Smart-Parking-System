@@ -1,4 +1,64 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Parking System with IoT</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    #status { margin-bottom: 20px; font-size: 1.2em; }
+    .parking-lot { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .parkingspot { width: 100px; height: 50px; line-height: 50px; color: #fff; font-weight: bold; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .available { background-color: green; }
+    .occupied { background-color: red; }
+  </style>
+</head>
+<body>
+  <h1>Smart Parking System with IoT</h1>
+  <div id="status">Connecting to sensor data...</div>
+  <div class="parking-lot" id="parkingLot"></div>
+
+  <script>
+    const totalSlots = 10;
+    const parkingSlots = Array(totalSlots).fill(false); // false = occupied, true = available
+
+    const parkingLotDiv = document.getElementById('parkingLot');
+    const statusDiv = document.getElementById('status');
+
+    function renderSlots() {
+      parkingLotDiv.innerHTML = '';
+      for (let i = 0; i < totalSlots; i++) {
+        const slotDiv = document.createElement('div');
+        slotDiv.className = 'parkingspot ' + (parkingSlots[i] ? 'available' : 'occupied');
+        slotDiv.innerText = 'Slot ' + (i + 1);
+        parkingLotDiv.appendChild(slotDiv);
+      }
+    }
+
+    // Connect to WebSocket server (replace with your server URL)
+    const socket = new WebSocket('ws://your-server-address');
+
+    socket.onopen = () => {
+      statusDiv.innerText = 'Connected to sensor data.';
+    };
+
+    socket.onmessage = (event) => {
+      // Expect data format: { slot: 1, occupied: true/false }
+      const data = JSON.parse(event.data);
+      const slotIndex = data.slot - 1;
+      parkingSlots[slotIndex] = !data.occupied; // true = available
+      renderSlots();
+    };
+
+    socket.onerror = () => {
+      statusDiv.innerText = 'Error connecting to sensor data.';
+    };
+
+    // Initial rendering
+    renderSlots();
+  </script>
+</body>
+</html><!DOCTYPE html>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
