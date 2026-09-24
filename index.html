@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Parking System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Smart Parking System</h1>
+  <div>Total Available Slots: <span id="availableCount">10</span></div>
+  <div class="parking-lot" id="parkingLot"></div>
+  <div class="buttons">
+    <button onclick="toggleSlot()">Toggle Random Slot</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,124 +29,4 @@
 <body>
   <h1>Smart Parking System</h1>
   <div class="parking-lot">
-    <div class="parkingspot" id="spot1" style="background-color: green;">Spot 1 available</div>
-    <div class="parkingspot" id="spot2" style="background-color: red;">Spot 2 occupied</div>
-    <div class="parkingspot" id="spot3" style="background-color: green;">Spot 3 available</div>
-  </div>
-  <div class="buttons">
-    <button onclick="toggleSpot(1)">Toggle Spot 1</button>
-    <button onclick="toggleSpot(2)">Toggle Spot 2</button>
-    <button onclick="toggleSpot(3)">Toggle Spot 3</button>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Smart Parking System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-        }
-        h1 {
-            margin: 0;
-        }
-        .status {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .park-status {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        .spot {
-            padding: 10px;
-            border-radius: 4px;
-            background-color: #e0e0e0;
-            width: 100px;
-            text-align: center;
-        }
-        .available {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .occupied {
-            background-color: #F44336;
-            color: white;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Smart Parking System</h1>
-    </header>
-    <div class="status">
-        <h2>Parking Spot Status</h2>
-        <div class="park-status" id="parkingSpots">
-            <!-- Parking spots will be displayed here -->
-        </div>
-        <button onclick="toggleSpot(1)">Toggle Spot 1</button>
-        <button onclick="toggleSpot(2)">Toggle Spot 2</button>
-        <button onclick="toggleSpot(3)">Toggle Spot 3</button>
-    </div>
-
-    <script>
-        // Sample parking spots data
-        const spots = [
-            { id: 1, status: 'available' },
-            { id: 2, status: 'occupied' },
-            { id: 3, status: 'available' },
-        ];
-
-        function renderSpots() {
-            const container = document.getElementById('parkingSpots');
-            container.innerHTML = '';
-            spots.forEach(spot => {
-                const spotDiv = document.createElement('div');
-                spotDiv.className = 'spot ' + (spot.status === 'available' ? 'available' : 'occupied');
-                spotDiv.innerHTML = `Spot ${spot.id}<br/>${spot.status}`;
-                container.appendChild(spotDiv);
-            });
-        }
-
-        function toggleSpot(id) {
-            const spot = spots.find(s => s.id === id);
-            if (spot) {
-                spot.status = spot.status === 'available' ? 'occupied' : 'available';
-                renderSpots();
-            }
-        }
-
-        // Initial render
-        renderSpots();
-    </script>
-</body>
-</html>
+    
