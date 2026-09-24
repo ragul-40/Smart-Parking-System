@@ -2,7 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Parking System with IoT</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  /* Style for the image */
+  .header-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  /* Existing styles... */
+  .status {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .slot {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Color styles for slots */
+  .available {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  .occupied {
+    background-color: #F44336; /* Red */
+    color: white;
+  }
+
+  /* Button styling */
+  #toggleButton {
+    background-color: #2196F3; /* Blue */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin-top: 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #toggleButton:hover {
+    background-color: #0b7dda;
+  }
+</style>
+</head>
+<body>
+
+<h1>Smart Parking System with IoT</h1>
+<!-- Add your image here -->
+<img src="your-image-path.png" alt="Smart Parking" class="header-image" />
+
+<div class="status" id="parkingSlots">
+  <div class="slot occupied" id="slot1">Slot 1 - Occupied</div>
+  <div class="slot available" id="slot2">Slot 2 - Available</div>
+  <div class="slot available" id="slot3">Slot 3 - Available</div>
+  <div class="slot occupied" id="slot4">Slot 4 - Occupied</div>
+  <div class="slot available" id="slot5">Slot 5 - Available</div>
+  <div class="slot available" id="slot6">Slot 6 - Available</div>
+  <div class="slot occupied" id="slot7">Slot 7 - Occupied</div>
+  <div class="slot available" id="slot8">Slot 8 - Available</div>
+  <div class="slot available" id="slot9">Slot 9 - Available</div>
+  <div class="slot occupied" id="slot10">Slot 10 - Occupied</div>
+</div>
+
+<button id="toggleButton">Toggle Random Slot</button>
+
+<script>
+  // Your existing script...
+  function updateSlotAppearance(slotId, isAvailable) {
+    const slot = document.getElementById(slotId);
+    if (isAvailable) {
+      slot.className = 'slot available';
+      slot.innerText = slot.innerText.replace('Occupied', 'Available');
+    } else {
+      slot.className = 'slot occupied';
+      slot.innerText = slot.innerText.replace('Available', 'Occupied');
+    }
+  }
+
+  function toggleRandomSlot() {
+    const slotIds = ['slot1', 'slot2', 'slot3', 'slot4', 'slot5', 'slot6', 'slot7', 'slot8', 'slot9', 'slot10'];
+    const randomSlotId = slotIds[Math.floor(Math.random() * slotIds.length)];
+    const slot = document.getElementById(randomSlotId);
+    const isAvailable = slot.classList.contains('available');
+    updateSlotAppearance(randomSlotId, !isAvailable);
+  }
+
+  document.getElementById('toggleButton').addEventListener('click', toggleRandomSlot);
+</script>
+
+</body>
+</html>.0" />
 <title>Smart Parking System with IoT</title>
 <style>
   body {
