@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parking Slots Details</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+  h1 { margin-bottom: 20px; }
+  .parking-lot { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .parkingspot { width: 150px; height: 50px; line-height: 50px; color: #fff; font-weight: bold; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .available { background-color: green; }
+  .occupied { background-color: red; }
+</style>
+</head>
+<body>
+<h1>Parking Slots Status</h1>
+<div class="parking-lot" id="parkingLot"></div>
+
+<script>
+  // Parse URL parameter for data
+  const urlParams = new URLSearchParams(window.location.search);
+  const slotsData = JSON.parse(urlParams.get('data'));
+
+  const parkingLotDiv = document.getElementById('parkingLot');
+
+  function renderSlots() {
+    parkingLotDiv.innerHTML = '';
+    slotsData.forEach((isAvailable, index) => {
+      const slotDiv = document.createElement('div');
+      slotDiv.className = 'parkingspot ' + (isAvailable ? 'available' : 'occupied');
+      slotDiv.innerText = `Slot ${index + 1} - ${isAvailable ? 'Available' : 'Occupied'}`;
+      parkingLotDiv.appendChild(slotDiv);
+    });
+  }
+
+  renderSlots();
+</script>
+</body>
+</html>
