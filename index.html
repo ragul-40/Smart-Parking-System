@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Parking System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Smart Parking System</h1>
+  <div class="parking-lot">
+    <div class="parkingspot" id="spot1" style="background-color: green;">Spot 1 available</div>
+    <div class="parkingspot" id="spot2" style="background-color: red;">Spot 2 occupied</div>
+    <div class="parkingspot" id="spot3" style="background-color: green;">Spot 3 available</div>
+  </div>
+  <div class="buttons">
+    <button onclick="toggleSpot(1)">Toggle Spot 1</button>
+    <button onclick="toggleSpot(2)">Toggle Spot 2</button>
+    <button onclick="toggleSpot(3)">Toggle Spot 3</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Smart Parking System</title>
